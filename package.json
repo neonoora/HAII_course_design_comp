@@ -1,0 +1,36 @@
+{
+  "name": "course-design-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test:rag": "tsx lib/rag/test.ts"
+  },
+  "dependencies": {
+    "@xenova/transformers": "^2.17.2",
+    "next": "14.2.5",
+    "openai": "^4.47.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "ignore-loader": "^0.1.2",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.5.3",
+    "worker-loader": "^3.0.8"
+  }
+}

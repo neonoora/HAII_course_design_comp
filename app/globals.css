@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for chat area */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Markdown styling in bot messages */
+.markdown-content h2 {
+  @apply text-lg font-semibold mt-4 mb-2 text-gray-800;
+}
+
+.markdown-content h3 {
+  @apply text-base font-semibold mt-3 mb-2 text-gray-800;
+}
+
+.markdown-content p {
+  @apply mb-2 text-gray-700;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply mb-2 ml-6 pl-2;
+  list-style-position: outside;
+}
+
+.markdown-content li {
+  @apply mb-1 text-gray-700 leading-relaxed;
+  display: list-item;
+}
+
+.markdown-content strong {
+  @apply font-semibold text-gray-900;
+}
+
+.markdown-content code {
+  @apply bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.markdown-content pre {
+  @apply bg-gray-100 p-3 rounded mb-2 overflow-x-auto;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-blue-300 pl-3 italic text-gray-600;
+}
+
