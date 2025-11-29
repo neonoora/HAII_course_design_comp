@@ -28,6 +28,7 @@ export default function Home() {
   const [resourceHubOpen, setResourceHubOpen] = useState(false)
   const [openSection, setOpenSection] = useState<string | null>(null) // Track which section is open
   const [darkMode, setDarkMode] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
@@ -131,32 +132,33 @@ export default function Home() {
     <div className="h-screen bg-gray-50 dark:bg-gray-900 flex flex-col overflow-hidden">
       {/* Header */}
       <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 flex-shrink-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            <div className="flex-1 min-w-0">
+              <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-gray-100 truncate">
                 Course Design Companion
               </h1>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-              Quick help for specific teaching challenges
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 hidden sm:block">
+                Quick help for specific teaching challenges
               </p>
             </div>
-            <div className="flex items-center gap-3">
+            {/* Desktop buttons */}
+            <div className="hidden md:flex items-center gap-2 lg:gap-3">
               <button
                 onClick={() => {
                   setHelpPanelOpen(!helpPanelOpen)
-                  if (!helpPanelOpen) setResourceHubOpen(false) // Close resource hub if opening help panel
+                  if (!helpPanelOpen) setResourceHubOpen(false)
                 }}
-                className="px-4 py-2 text-sm text-blue-700 bg-blue-100 hover:bg-blue-200 dark:text-blue-300 dark:bg-blue-900 dark:hover:bg-blue-800 rounded-lg transition-colors font-medium"
+                className="px-3 lg:px-4 py-2 text-xs lg:text-sm text-blue-700 bg-blue-100 hover:bg-blue-200 dark:text-blue-300 dark:bg-blue-900 dark:hover:bg-blue-800 rounded-lg transition-colors font-medium"
               >
                 About the Tool
               </button>
               <button
                 onClick={() => {
                   setResourceHubOpen(!resourceHubOpen)
-                  if (!resourceHubOpen) setHelpPanelOpen(false) // Close help panel if opening resource hub
+                  if (!resourceHubOpen) setHelpPanelOpen(false)
                 }}
-                className="px-4 py-2 text-sm text-green-700 bg-green-100 hover:bg-green-200 dark:text-green-300 dark:bg-green-900 dark:hover:bg-green-800 rounded-lg transition-colors font-medium"
+                className="px-3 lg:px-4 py-2 text-xs lg:text-sm text-green-700 bg-green-100 hover:bg-green-200 dark:text-green-300 dark:bg-green-900 dark:hover:bg-green-800 rounded-lg transition-colors font-medium"
               >
                 Resource Hub
               </button>
@@ -176,7 +178,65 @@ export default function Home() {
                 )}
               </button>
             </div>
+            {/* Mobile hamburger menu button */}
+            <div className="md:hidden flex items-center gap-2">
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors"
+                aria-label="Toggle dark mode"
+              >
+                {darkMode ? (
+                  <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                </svg>
+                )}
+              </button>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors"
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? (
+                  <svg className="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
+          {/* Mobile menu dropdown */}
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-3 pt-3 border-t border-gray-200 dark:border-gray-700 space-y-2">
+              <button
+                onClick={() => {
+                  setHelpPanelOpen(!helpPanelOpen)
+                  setMobileMenuOpen(false)
+                  if (!helpPanelOpen) setResourceHubOpen(false)
+                }}
+                className="w-full px-4 py-2 text-sm text-blue-700 bg-blue-100 hover:bg-blue-200 dark:text-blue-300 dark:bg-blue-900 dark:hover:bg-blue-800 rounded-lg transition-colors font-medium text-left"
+              >
+                About the Tool
+              </button>
+              <button
+                onClick={() => {
+                  setResourceHubOpen(!resourceHubOpen)
+                  setMobileMenuOpen(false)
+                  if (!resourceHubOpen) setHelpPanelOpen(false)
+                }}
+                className="w-full px-4 py-2 text-sm text-green-700 bg-green-100 hover:bg-green-200 dark:text-green-300 dark:bg-green-900 dark:hover:bg-green-800 rounded-lg transition-colors font-medium text-left"
+              >
+                Resource Hub
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
@@ -185,7 +245,7 @@ export default function Home() {
         {/* Chat area */}
         <main className="flex-1 flex flex-col overflow-hidden min-h-0">
           {/* Messages area - scrollable */}
-          <div className="flex-1 overflow-y-auto chat-scrollbar px-4 sm:px-6 lg:px-8 py-6 min-h-0">
+          <div className="flex-1 overflow-y-auto chat-scrollbar px-3 sm:px-4 lg:px-8 py-4 sm:py-6 min-h-0">
             <div className="max-w-3xl mx-auto">
               {messages.map((message) => (
                 <ChatMessage
@@ -240,34 +300,34 @@ export default function Home() {
           </div>
 
           {/* Input area - fixed at bottom */}
-          <div className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 px-4 sm:px-6 lg:px-8 py-4 flex-shrink-0">
-            <div className="flex gap-3 items-center">
+          <div className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 px-3 sm:px-4 lg:px-8 py-3 sm:py-4 flex-shrink-0">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 items-stretch sm:items-center">
               {messages.length > 1 && (
-                    <button
+                <button
                   onClick={handleNewConversation}
-                  className="px-4 py-2 text-sm text-blue-700 bg-blue-100 hover:bg-blue-200 dark:text-blue-300 dark:bg-blue-900 dark:hover:bg-blue-800 rounded-lg transition-colors whitespace-nowrap font-medium"
-                    >
+                  className="px-3 sm:px-4 py-2 text-xs sm:text-sm text-blue-700 bg-blue-100 hover:bg-blue-200 dark:text-blue-300 dark:bg-blue-900 dark:hover:bg-blue-800 rounded-lg transition-colors whitespace-nowrap font-medium self-start sm:self-auto"
+                >
                   New Conversation
-                    </button>
+                </button>
               )}
-              <div className="flex-1 max-w-3xl mx-auto">
-                <div className="flex gap-3 items-center">
-                <div className="flex-1 relative">
-                  <textarea
-                    ref={textareaRef}
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    onKeyDown={handleKeyDown}
-                    placeholder="Type your message..."
-                    className="w-full px-4 py-3 pr-20 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400 resize-none max-h-32 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
-                    rows={1}
-                    disabled={loading}
-                  />
+              <div className="flex-1 max-w-3xl mx-auto w-full">
+                <div className="flex gap-2 sm:gap-3 items-end">
+                  <div className="flex-1 relative">
+                    <textarea
+                      ref={textareaRef}
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      placeholder="Type your message..."
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 pr-16 sm:pr-20 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:focus:ring-blue-400 dark:focus:border-blue-400 resize-none max-h-32 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
+                      rows={1}
+                      disabled={loading}
+                    />
                   </div>
                   <button
                     onClick={handleSend}
                     disabled={!input.trim() || loading}
-                    className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors font-medium text-sm whitespace-nowrap"
+                    className="px-4 sm:px-6 py-2 sm:py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors font-medium text-xs sm:text-sm whitespace-nowrap"
                   >
                     Send
                   </button>
@@ -285,24 +345,24 @@ export default function Home() {
           />
         )}
         <div
-          className={`fixed right-4 w-[30%] bg-white dark:bg-gray-800 shadow-2xl border border-gray-200 dark:border-gray-700 rounded-lg transform transition-all duration-300 ease-in-out z-40 flex flex-col ${
+          className={`fixed right-0 sm:right-4 w-full sm:w-[90%] md:w-[50%] lg:w-[30%] bg-white dark:bg-gray-800 shadow-2xl border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-lg transform transition-all duration-300 ease-in-out z-40 flex flex-col ${
             helpPanelOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
           }`}
           style={{
-            top: '80px', // Below header
-            bottom: '100px', // Above footer/input area
-            maxHeight: 'calc(100vh - 180px)', // Ensures it never covers header or footer
+            top: '70px', // Below header (adjusted for mobile)
+            bottom: '80px', // Above footer/input area (adjusted for mobile)
+            maxHeight: 'calc(100vh - 150px)', // Ensures it never covers header or footer
           }}
           onClick={(e) => e.stopPropagation()}
         >
 
           {/* Panel content */}
-          <div className="flex-1 overflow-y-auto p-6 min-h-0">
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 min-h-0">
+            <div className="mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                 About the Tool
               </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 Learn more about how this tool works
               </p>
             </div>
@@ -467,99 +527,107 @@ export default function Home() {
           />
         )}
         <div
-          className={`fixed right-4 w-[30%] bg-white dark:bg-gray-800 shadow-2xl border border-gray-200 dark:border-gray-700 rounded-lg transform transition-all duration-300 ease-in-out z-40 flex flex-col ${
+          className={`fixed right-0 sm:right-4 w-full sm:w-[90%] md:w-[50%] lg:w-[30%] bg-white dark:bg-gray-800 shadow-2xl border border-gray-200 dark:border-gray-700 rounded-lg sm:rounded-lg transform transition-all duration-300 ease-in-out z-40 flex flex-col ${
             resourceHubOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
           }`}
           style={{
-            top: '80px', // Below header
-            bottom: '100px', // Above footer/input area
-            maxHeight: 'calc(100vh - 180px)', // Ensures it never covers header or footer
+            top: '70px', // Below header (adjusted for mobile)
+            bottom: '80px', // Above footer/input area (adjusted for mobile)
+            maxHeight: 'calc(100vh - 150px)', // Ensures it never covers header or footer
           }}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Panel content */}
-          <div className="flex-1 overflow-y-auto p-6 min-h-0">
-            <div className="mb-6">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 min-h-0">
+            <div className="mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                 Resource Hub
               </h2>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 Access helpful resources and support
               </p>
             </div>
 
             {/* Links */}
-            <div className="space-y-3">
-              <a
-                href="#"
-                className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-xs font-medium text-gray-900 dark:text-gray-100"
-                onClick={(e) => {
-                  e.preventDefault()
-                  // Add your sign-up link here
-                  console.log('1-on-1 consultation sign up clicked')
-                }}
-              >
-                <span>1-on-1 Consultation Sign Up</span>
-                <svg
-                  className="w-4 h-4 text-gray-600 dark:text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+            <div className="space-y-2 sm:space-y-3">
+              <div className="p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                <a
+                  href="https://www.cmu.edu/teaching/consultation/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400 underline"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-              <a
-                href="#"
-                className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-xs font-medium text-gray-900 dark:text-gray-100"
-                onClick={(e) => {
-                  e.preventDefault()
-                  // Add your sign-up link here
-                  console.log('Fellowship workshop sign up clicked')
-                }}
-              >
-                <span>Fellowship Workshop Sign Up</span>
-                <svg
-                  className="w-4 h-4 text-gray-600 dark:text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                  <span className="break-words pr-2">1-on-1 Consultation Sign Up</span>
+                  <svg
+                    className="w-4 h-4 text-gray-600 dark:text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                  1-hour in-personconsultation with an instructional designer
+                </p>
+              </div>
+              <div className="p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                <a
+                  href="https://www.cmu.edu/teaching/programs/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400 underline"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
-              <a
-                href="https://udlguidelines.cast.org/"
-                style={{ textDecoration: 'underline' }}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors text-xs font-medium text-gray-900 dark:text-gray-100"
-              >
-                <span>UDL Principles</span>
-                <svg
-                  className="w-4 h-4 text-gray-600 dark:text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                  <span className="break-words pr-2">Fellowship Workshop Sign Up</span>
+                  <svg
+                    className="w-4 h-4 text-gray-600 dark:text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                  Professional development workshops for structured learning
+                </p>
+              </div>
+              <div className="p-3 sm:p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                <a
+                  href="https://udlguidelines.cast.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400 underline"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
+                  <span className="break-words pr-2">UDL Principles</span>
+                  <svg
+                    className="w-4 h-4 text-gray-600 dark:text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+                <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                  Research based principles for inclusive & accessible learning
+                </p>
+              </div>
             </div>
           </div>
         </div>

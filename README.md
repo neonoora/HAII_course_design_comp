@@ -1,4 +1,4 @@
-# Course Design Assistant
+# Course Design Companion
 
 An AI-powered instructional support tool for higher education instructors. This tool helps instructors improve specific aspects of their courses using research-based pedagogical principles, providing concrete, actionable suggestions with evidence backing.
 
@@ -31,7 +31,7 @@ Key principles:
 - **Next.js 14** - React framework with App Router
 - **TypeScript** - Type-safe development
 - **Tailwind CSS** - Utility-first styling
-- **OpenAI API** - GPT-4 for AI-powered responses
+- **OpenAI API** - GPT-5 nano for AI-powered responses
 - **React Markdown** - Rich text formatting for bot responses
 - **@xenova/transformers** - Local embeddings for RAG (no API costs)
 
@@ -139,7 +139,7 @@ pnpm dev
 
 ### Switching AI Models
 
-Currently using OpenAI's GPT-4. To switch to Anthropic's Claude:
+Currently using OpenAI's GPT-5 nano. To switch to Anthropic's Claude:
 
 1. Install Anthropic SDK:
 ```bash
