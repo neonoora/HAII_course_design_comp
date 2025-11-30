@@ -18,13 +18,10 @@ Key principles:
 
 ## Features
 
-- **Fast, Clean Interface** - Minimal visual clutter for hurried users
 - **Evidence-Based Suggestions** - All recommendations grounded in proven pedagogical research
 - **One Problem at a Time** - Focused approach to avoid overwhelming instructors
 - **Concrete Examples** - Small-scale, implementable suggestions with specific details
 - **Trust-Building Elements** - Research backing and evidence cited naturally
-- **Feedback System** - Thumbs up/down and copy functionality for responses
-- **Mobile Responsive** - Works on all devices for busy instructors on-the-go
 
 ## Tech Stack
 
