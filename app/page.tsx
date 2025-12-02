@@ -139,7 +139,7 @@ export default function Home() {
                 Course Design Companion
               </h1>
               <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1 hidden sm:block">
-                UDL-based Quick help for specific teaching challenges
+                UDL-based Quick Help for Specific Teaching Challenges
               </p>
             </div>
             {/* Desktop buttons */}
