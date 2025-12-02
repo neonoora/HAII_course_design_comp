@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Course Design Assistant - Evidence-Based Teaching Support',
-  description: 'Get practical, evidence-based suggestions for improving specific aspects of your courses. Quick, actionable advice backed by research.',
+  title: 'Course Design Companion - Evidence-Based Teaching Support',
+  description: 'Quick help for specific teaching challenges',
 }
 
 export default function RootLayout({
