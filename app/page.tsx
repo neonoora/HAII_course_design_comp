@@ -10,7 +10,7 @@ interface Message {
   timestamp: Date
 }
 
-const INITIAL_BOT_MESSAGE = "Hi! I'm here to help you tackle **specific teaching challenges**—whether that's redesigning an assignment, boosting engagement in a lesson, or supporting students with varied backgrounds.\n\n **- I work best with:** Focused questions about particular activities, assignments, or teaching moments.\n Learn more about me in <**About the Tool**>\n\n**- For bigger projects** (full course design, syllabus reviews): check out the <**Resource Hub**> for one-on-one support\n\n**! Fair warning:** My suggestions are evidence-based starting points, but every classroom is different. You're the expert on your students!\n\nWhat specific challenge would you like help with today?"
+const INITIAL_BOT_MESSAGE = "Hi! I'm here to help you tackle **specific teaching challenges** — whether that's redesigning an assignment, boosting engagement in a lesson, or supporting students with varied backgrounds.\n\n **- I work best with:** Focused questions about particular activities, assignments, or teaching moments\n\n**- For bigger projects** (full course design, syllabus reviews): check out the resource hub for one-on-one in-person support\n\n**! Fair warning:** My suggestions are evidence-based starting points, following Universal Design for Learning (UDL) Guidelines, but every classroom is different. You're the expert on your students!\n\nWhat specific challenge would you like help with today?"
 export default function Home() {
   // Initialize with bot message
   const [messages, setMessages] = useState<Message[]>([
