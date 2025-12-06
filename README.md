@@ -3,6 +3,7 @@
 An AI-powered instructional support tool for higher education instructors. This tool helps instructors improve specific aspects of their courses using research-based pedagogical principles (i.e., UDL), providing concrete, actionable suggestions with evidence backing.
 
 Access the APP: https://haii-course-design-comp.vercel.app/
+
 Note: If you see warnings like “something went wrong,” it’s probably because I ran out of OpenAI API credits. Feel free to let me know at hainuoc@andrew.cmu.edu
 
 AI use: For this project, I used ChatGPT and Cursor to help build the UI, refine the system prompt, and write the RAG and embedding code.
