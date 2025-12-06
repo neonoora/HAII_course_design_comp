@@ -2,6 +2,7 @@
 
 An AI-powered instructional support tool for higher education instructors. This tool helps instructors improve specific aspects of their courses using research-based pedagogical principles (i.e., UDL), providing concrete, actionable suggestions with evidence backing.
 
+AI use: For this project, I used ChatGPT and Cursor to help build the UI, refine the system prompt, and write the RAG and embedding code.
 ## Tech Stack
 
 - **Next.js 14** - React framework with App Router
